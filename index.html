@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html ng-app="myapp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<title>Tiles</title>
+    
+    </head>
+    <body>
+        <div ng-controller="HelloController"
+             class="main-container">
+            
+        <div class="start-game"
+             ng-show="!showTile">
+         <div>
+             <h1>{{headingText}}</h1>
+             <ul>
+                 <li>Uncolored all cell before the time limit</li>
+                 <li>You will have 3 life</li>
+                 <li>The tiles will become 5 again after every time limits</li>
+             </ul>
+<!--
+             <span>Difficulty</span>
+             <input type="number" name="quantity" min="1" max="3">
+-->
+            </div>
+         <div ng-click="startGame()"
+              class="start">{{startText}}</div>    
+        </div>
+        <div class="tiles-container" 
+             ng-show="showTile">
+            <span class="timer">Timer: {{countDown}}</span>
+            <span class="life">Remaining life: {{life}}</span>
+            <div class="row" ng-repeat="row in tiles">
+                <div class="tiles" 
+                     ng-class="{'red':tile.colored}" 
+                     ng-repeat="tile in row "
+                     ng-click="changeColor(tile)"></div>
+            </div>
+            
+        </div>
+        </div>
+    </body>
+    <script src="app.js"></script>
+
+</html>
